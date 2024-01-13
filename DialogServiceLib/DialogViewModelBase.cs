@@ -8,7 +8,7 @@ namespace DialogServiceLib
 {
     public class DialogViewModelBase<TResult> : ViewModelBase
     {
-        public TResult InputValue { get; set; }
+        public virtual TResult InputValue { get; set; }
 
         public AddEditDialogMode Mode { get; set;}
 

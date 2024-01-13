@@ -101,7 +101,7 @@ namespace DialogServiceLib
                 var outputValue = backwardCopyingService.Copy(dialogViewModel.DialogResult.Item1, value);
                 if (outputValue == null)
                     throw new Exception("backwardCopyingService returned null");
-                if (outputValue.GetType() != typeof(TResult) && outputValue.GetType() != typeof(TResult?))
+                if (!outputValue.GetType().IsAssignableTo(typeof(TResult)))
                     throw new Exception("backwardCopyingService returned value of wrong type. Expected " + typeof(TResult) + " But was " + outputValue.GetType() + ".");
 
                 return new Tuple<TResult?, bool>((TResult)outputValue, dialogViewModel.DialogResult.Item2);
